@@ -75,13 +75,13 @@ class GeneratePDFRequest(BaseModel):
     report_content: str
     company_name: str | None = None
 
-@app.options("/research")
-async def preflight():
-    response = JSONResponse(content=None, status_code=200)
-    response.headers["Access-Control-Allow-Origin"] = "*"
-    response.headers["Access-Control-Allow-Methods"] = "POST, OPTIONS"
-    response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
-    return response
+#    @app.options("/research")
+#    async def preflight():
+#        response = JSONResponse(content=None, status_code=200)
+#        response.headers["Access-Control-Allow-Origin"] = "*"
+#        response.headers["Access-Control-Allow-Methods"] = "POST, OPTIONS"
+#        response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
+#        return response
 
 @app.post("/research")
 async def research(data: ResearchRequest):
@@ -96,10 +96,10 @@ async def research(data: ResearchRequest):
             "message": "Research started. Connect to WebSocket for updates.",
             "websocket_url": f"/research/ws/{job_id}"
         })
-        response.headers["Access-Control-Allow-Origin"] = "*"
-        response.headers["Access-Control-Allow-Methods"] = "POST, OPTIONS"
-        response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
-        return response
+#        response.headers["Access-Control-Allow-Origin"] = "*"
+#        response.headers["Access-Control-Allow-Methods"] = "POST, OPTIONS"
+#        response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
+#        return response
 
     except Exception as e:
         logger.error(f"Error initiating research: {str(e)}", exc_info=True)
