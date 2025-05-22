@@ -32,9 +32,9 @@ app = FastAPI(title="Tavily Company Research API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://kyc-ai-frontend.netlify.app"],
+    allow_origins=["https://kyc-ai-frontend.netlify.app/"], 
     allow_credentials=True,
-    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_methods=["*"],
     allow_headers=["*"],
 )
 
