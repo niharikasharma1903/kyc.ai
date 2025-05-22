@@ -28,16 +28,18 @@ logger.setLevel(logging.INFO)
 console_handler = logging.StreamHandler()
 logger.addHandler(console_handler)
 
-app = FastAPI(title="Tavily Company Research API")
+app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://kyc-ai-frontend.netlify.app"], 
+    allow_origins=[
+        "https://kyc-ai-frontend.netlify.app",
+        "http://localhost:5173",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 manager = WebSocketManager()
 pdf_service = PDFService({"pdf_output_dir": "pdfs"})
 
